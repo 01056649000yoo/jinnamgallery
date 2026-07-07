@@ -9,4 +9,3 @@ GitHub 저장소의 `main` 브랜치 루트를 GitHub Pages 소스로 설정하�
 - 메인: `index.html`
 - 제 1회 대회: `jinnam-ai-writing-contest-1.html`
 - 제 2회 대회: `jinnam-ai-writing-result.html`
-- 제 2회 공지 이미지: `jinnam-ai-writing-contest-2-notice.png`
