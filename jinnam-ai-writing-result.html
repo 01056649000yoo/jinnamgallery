@@ -89,7 +89,17 @@
       border-radius: 20px;
       box-shadow: 0 16px 44px rgba(31,41,55,.08);
     }
-    .winner { padding: 20px; border-left: 4px solid var(--amber); }
+    .winner {
+      display: block;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      padding: 20px;
+      border-left: 4px solid var(--amber);
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+    .winner:hover { transform: translateY(-3px); box-shadow: 0 20px 54px rgba(31,41,55,.12); border-color: #fbbf24; }
+    .winner:focus-visible { outline: 3px solid rgba(37,99,235,.38); outline-offset: 3px; }
     .winner h3 { margin: 10px 0 6px; font-size: 20px; line-height: 1.35; letter-spacing: 0; }
     .winner .score { color: #b45309; font-weight: 900; }
     .theme-card { padding: 22px; }
@@ -182,7 +192,7 @@
         </div>
       </div>
       <div class="winner-grid">
-        <article class="winner"><span class="pill award">최우수</span><h3>10개의 별이 우리반을 비추어요</h3><div class="author">김채린 · 5학년</div><p class="score">96점</p></article><article class="winner"><span class="pill award">최우수</span><h3>아이에서 어른으로</h3><div class="author">임아현 · 6학년</div><p class="score">96점</p></article><article class="winner"><span class="pill award">최우수</span><h3>태양보다 아름다운 꽃에게</h3><div class="author">최윤 · 4학년</div><p class="score">94점</p></article><article class="winner"><span class="pill award">최우수</span><h3>선생님 다음에 또 만나요!</h3><div class="author">김태린 · 5학년</div><p class="score">94점</p></article><article class="winner"><span class="pill award">최우수</span><h3>잠을 잤는데 30년이 흘렀다?!</h3><div class="author">김태은 · 6학년</div><p class="score">94점</p></article><article class="winner"><span class="pill award">최우수</span><h3>내 이름은 태양꽃에게 편지쓰기</h3><div class="author">장정우 · 4학년</div><p class="score">90점</p></article>
+        <button type="button" class="winner" data-id="2-5-4" aria-label="10개의 별이 우리반을 비추어요 작품 자세히 보기"><span class="pill award">최우수</span><h3>10개의 별이 우리반을 비추어요</h3><div class="author">김채린 · 5학년</div><p class="score">96점</p></button><button type="button" class="winner" data-id="2-6-5" aria-label="아이에서 어른으로 작품 자세히 보기"><span class="pill award">최우수</span><h3>아이에서 어른으로</h3><div class="author">임아현 · 6학년</div><p class="score">96점</p></button><button type="button" class="winner" data-id="2-4-8" aria-label="태양보다 아름다운 꽃에게 작품 자세히 보기"><span class="pill award">최우수</span><h3>태양보다 아름다운 꽃에게</h3><div class="author">최윤 · 4학년</div><p class="score">94점</p></button><button type="button" class="winner" data-id="2-5-5" aria-label="선생님 다음에 또 만나요! 작품 자세히 보기"><span class="pill award">최우수</span><h3>선생님 다음에 또 만나요!</h3><div class="author">김태린 · 5학년</div><p class="score">94점</p></button><button type="button" class="winner" data-id="2-6-3" aria-label="잠을 잤는데 30년이 흘렀다?! 작품 자세히 보기"><span class="pill award">최우수</span><h3>잠을 잤는데 30년이 흘렀다?!</h3><div class="author">김태은 · 6학년</div><p class="score">94점</p></button><button type="button" class="winner" data-id="2-4-6" aria-label="내 이름은 태양꽃에게 편지쓰기 작품 자세히 보기"><span class="pill award">최우수</span><h3>내 이름은 태양꽃에게 편지쓰기</h3><div class="author">장정우 · 4학년</div><p class="score">90점</p></button>
       </div>
     </section>
 
@@ -327,6 +337,9 @@
     $("closeModal").addEventListener("click", closeModal);
     $("modal").addEventListener("click", (event) => { if (event.target.id === "modal") closeModal(); });
     document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeModal(); });
+    document.querySelectorAll(".winner").forEach((button) => {
+      button.addEventListener("click", () => openEntry(button.dataset.id));
+    });
     window.addEventListener("resize", fitHeroTitle);
     window.addEventListener("load", fitHeroTitle);
     if (document.fonts) document.fonts.ready.then(fitHeroTitle);
